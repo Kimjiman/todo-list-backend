@@ -136,13 +136,10 @@ flowchart LR
 ### A. Branch Strategy
 
 - 협의필요
-- | Branch | Usage |
-          |--------|-------|
-  | `main` | 배포 브랜치 |
-  | `develop` | 개발 통합 브랜치 |
-  | `feature/{기능명}` | 기능 개발 |
-  | `fix/{버그명}` | 버그 수정 |
-  | `hotfix/{이슈명}` | 긴급 수정 |
+
+| Branch | Usage |
+|--------|-------|
+| `main` | 배포 브랜치 |
 
 ### B. Commit Message Rule
 
@@ -173,6 +170,7 @@ flowchart LR
 flowchart LR
     A[Controller] --> B[Facade] <-->|Converter| C[Service] --> D[Repository] --> E[(Database)]
 ```
+
 - Facade Layer에서 (Request: Model->Entity), (Response: Entity->Model), MapStruct를 이용하여 컨버팅을 반드시 해야합니다.
 - Service에서 다른 Service의 호출은 금지됩니다.
 - 트랜잭션은 Facade Layer에서 실행됩니다.
@@ -187,6 +185,6 @@ flowchart LR
 
 - `/.claude/**` - Agent, Command, Rule, Skill 확장
 - `.mcp.json` - 기본 MCP Connector
-- `CLAUDE.md` - 클로드 planner 
+- `CLAUDE.md` - 클로드 planner
 
 ---
