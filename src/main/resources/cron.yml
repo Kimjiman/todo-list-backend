@@ -1,0 +1,3 @@
+cron:
+  cache:
+    refresh-code: '0 0 * * * *'     # 코드

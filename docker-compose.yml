@@ -1,0 +1,48 @@
+# ===========================================
+# Local Development
+# PostgreSQL, Redis
+# ===========================================
+# Usage:
+#   docker-compose up -d
+#   docker-compose down
+#   docker-compose down -v  (볼륨까지 삭제, DB 초기화)
+
+name: todolist
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: todolist-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: postgres
+      TZ: Asia/Seoul
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: todolist-redis
+    restart: unless-stopped
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres-data:
+  redis-data:

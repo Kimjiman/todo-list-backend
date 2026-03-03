@@ -1,0 +1,10 @@
+package com.example.todolist.module.user.repository;
+
+import com.example.todolist.module.user.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface UserRepository extends JpaRepository<User, Long>, UserRepositoryCustom {
+    Optional<User> findByLoginId(String loginId);
+}
