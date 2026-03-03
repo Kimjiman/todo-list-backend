@@ -71,6 +71,12 @@
 위의 과정에서 설치가 완료되었다면, 해당 프로젝트만 구동하면 됩니다. 프로젝트 구동
 시, [LocalDockerConfig](src/main/java/com/example/todolist/config/LocalDockerConfig.java)에서 프로젝트 인프라를 자동으로 세팅해줍니다.
 
+### 접속 정보
+
+- `Postgresql`: http://localhost:15432/postgres | 스키마: todolist | admin:1234
+- `Redis`: http://localhost:16379
+- `Swagger UI`: http://localhost:8086/swagger-ui/index.html
+
 ![docker](docs/img/dockerDesktop.png)
 
 ---
@@ -125,9 +131,6 @@ flowchart LR
 - **Model** (`extends BaseModel<Long>`): Facade/Controller 계층에서 주고받는 객체
 - **Converter** (MapStruct): 양방향 변환 (`toModel` / `toEntity`)
 
-### 접속 정보
-
-- Swagger UI: http://localhost:8086/swagger-ui/index.html
 
 ---
 
